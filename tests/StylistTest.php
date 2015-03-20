@@ -16,7 +16,7 @@
             Stylist::deleteAll();
         }
 
-        function testGetStylist()
+        function testGetStylistName()
         {
             //Arrange
             $stylist_name = "Jane";
@@ -28,6 +28,21 @@
 
             //Assert
             $this->assertEquals("Jane", $result);
+        }
+
+        function testSetStylistName()
+        {
+            //Arrange
+            $stylist_name = "Jane";
+            $id = 1;
+            $test_stylist = new Stylist($stylist_name, $id);
+
+            //Act
+            $test_stylist->setStylistName('Jackie');
+
+            //Assert
+            $result = $test_stylist->getStylistName();
+            $this->assertEquals("Jackie", $result);
         }
 
         function testGetId()

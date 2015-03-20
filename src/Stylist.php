@@ -16,7 +16,7 @@
             return $this->stylist_name;
         }
 
-        function setStylist($new_stylist_name)
+        function setStylistName($new_stylist_name)
         {
             $this->stylist_name = (string) $new_stylist_name;
         }
@@ -37,6 +37,12 @@
         ) RETURNING id;");
             $result = $statement->fetch(PDO::FETCH_ASSOC);
             $this->setId($result['id']);
+        }
+
+        function update($new_name)
+        {
+            $GLOBALS['DB']->query("UPDATE stylists SET stylist_name = '{new_name}' WHERE id ='{$this->getId()}';");
+            $this->setStylistName($new_name);
         }
 
         static function find($search_id)
