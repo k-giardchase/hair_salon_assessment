@@ -39,9 +39,17 @@
         return $app['twig']->render('stylist.html.twig', array('stylist' => $selected_stylist));
     });
 
-    //Delete a single stylist from stylist page
-    $app->post('/delete_stylist', function() use ($app) {
+    //Edit a single stylist from stylist page
+    $app->patch('/stylist/{id}/edit', function ($id) use ($app) {
+        $selected_stylist = Stylist::find($id);
+        return $app['twig']->render('stylist_edit.html.twig', array('stylist' => $selected_stylist));
+    });
 
+    //Delete a single stylist from stylist page
+    $app->delete('/delete_stylist/{id}', function($id) use ($app) {
+        $selected_stylist = Stylist::find($id);
+        $selected_stylist->delete();
+        return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
     });
 
 
