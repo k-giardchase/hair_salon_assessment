@@ -50,6 +50,11 @@
             }
             return $all_clients;
         }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->query("DELETE FROM clients *;");
+        }
     }
 
 
