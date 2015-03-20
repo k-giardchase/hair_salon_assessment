@@ -38,6 +38,12 @@
             $this->setId($result['id']);
         }
 
+        function update($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE clients SET client_name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setClientName($new_name);
+        }
+
         static function find($search_id)
         {
             $found_client = null;
