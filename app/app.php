@@ -3,7 +3,12 @@
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Stylist.php";
 
+    use Symfony\Component\Debug\Debug;
+    Debug::enable();
+
     $app = new Silex\Application();
+
+    $app['debug'] = true;
 
     $DB = new PDO('pgsql:host=localhost;dbname=hair_salon');
 
@@ -39,7 +44,18 @@
     //Render single stylist page
     $app->get('/stylist/{id}', function($id) use ($app) {
         $selected_stylist = Stylist::find($id);
-        return $app['twig']->render('stylist.html.twig', array('stylist' => $selected_stylist));
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $selected_stylist, 'clients' => $selected_stylist->getClients()));
+    });
+
+    //Add client to stylist on stylist page
+    $app->post('/clients', function($id) use ($app) {
+        $client_name = $_POST['client_name'];
+        $stylist_id = $_POST['stylist_id'];
+        $id = null;
+        $new_client = new Client($client_name, $stylist_id, $id);
+        $new_client->save();
+        $selected_stylist = Stylist::find($stylist_id);
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $selected_stylist, 'clients' => $selected_stylist->getClients()));
     });
 
     //Edit a single stylist from stylist page
