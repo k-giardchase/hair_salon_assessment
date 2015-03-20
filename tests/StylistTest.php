@@ -20,7 +20,8 @@
         {
             //Arrange
             $stylist_name = "Jane";
-            $test_stylist = new Stylist($stylist_name);
+            $id = 1;
+            $test_stylist = new Stylist($stylist_name, $id);
 
             //Act
             $result = $test_stylist->getStylistName();
@@ -62,7 +63,8 @@
         {
             //Arrange
             $stylist_name = "Peter";
-            $test_stylist =  new Stylist($stylist_name);
+            $id = 1;
+            $test_stylist =  new Stylist($stylist_name, $id);
 
             //Act
             $test_stylist->save();
@@ -77,14 +79,15 @@
             //Arrange
             $stylist_name = "Jane";
             $stylist_name2 = "Peter";
-            $test_stylist = new Stylist($stylist_name);
-            $test_stylist2 = new Stylist($stylist_name2);
+            $id = 1;
+            $id2= 2;
+            $test_stylist = new Stylist($stylist_name, $id);
+            $test_stylist2 = new Stylist($stylist_name2, $id2);
             $test_stylist->save();
             $test_stylist2->save();
 
             //Act
             $result = Stylist::getAll();
-            var_dump($result);
 
             //Assert
             $this->assertEquals([$test_stylist, $test_stylist2], $result);
@@ -95,8 +98,10 @@
             //Arrange
             $stylist_name = "Jane";
             $stylist_name2 = "Peter";
-            $test_stylist = new Stylist($stylist_name);
-            $test_stylist2 = new Stylist($stylist_name2);
+            $id = 1;
+            $id2 = 2;
+            $test_stylist = new Stylist($stylist_name, $id);
+            $test_stylist2 = new Stylist($stylist_name2, $id2);
             $test_stylist->save();
             $test_stylist2->save();
 
@@ -106,7 +111,6 @@
 
             //Assert
             $result = Stylist::getAll();
-            var_dump($result);
             $this->assertEquals([], $result);
         }
     }

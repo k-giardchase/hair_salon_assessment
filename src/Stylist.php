@@ -21,10 +21,22 @@
             $this->stylist_name = (string) $new_stylist_name;
         }
 
+        function getId()
+        {
+            return $this->id;
+        }
+
+        function setId($new_id)
+        {
+            $this->id = (int) $new_id;
+        }
+
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO stylists (stylist_name) VALUES ('{$this->getStylistName()}'
-        );");
+            $statement = $GLOBALS['DB']->query("INSERT INTO stylists (stylist_name) VALUES ('{$this->getStylistName()}'
+        ) RETURNING id;");
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $this->setId($result['id']);
         }
 
         static function getAll()
@@ -33,7 +45,8 @@
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
             foreach($returned_stylists as $returned_stylist){
                 $stylist_name = $returned_stylist['stylist_name'];
-                $new_stylist = new Stylist($stylist_name);
+                $id = $returned_stylist['id'];
+                $new_stylist = new Stylist($stylist_name, $id);
                 array_push($all_stylists, $new_stylist);
             }
             return $all_stylists;
