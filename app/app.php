@@ -92,6 +92,7 @@
         return $app['twig']->render('client_edit.html.twig', array('client' => $selected_client));
     });
 
+    //Update existing client
     $app->patch('/client/{id}', function($id) use ($app) {
         $selected_client = Client::find($id);
         $new_client = $_POST['client_name'];
@@ -99,10 +100,11 @@
         return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
     });
 
+    //Delete a client
     $app->delete('/client/{id}', function($id) use ($app) {
             $selected_client = Client::find($id);
             $selected_client->delete();
-            return $app['twig']->render('/', array('stylists' => Stylist::getAll()));
+            return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
     });
 
     return $app;
