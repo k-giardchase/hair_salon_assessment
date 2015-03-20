@@ -11,6 +11,9 @@
         'twig.path' => __DIR__.'/../views'
     ));
 
+    use Symfony\Component\HttpFoundation\Request;
+Request::enableHttpMethodParameterOverride();
+
     //HOME
     //Render home page
     $app->get('/', function() use ($app) {
@@ -40,25 +43,26 @@
     });
 
     //Edit a single stylist from stylist page
-    $app->patch('/stylist/{id}/edit', function ($id) use ($app) {
+    $app->get('/stylist/{id}/edit', function ($id) use ($app) {
         $selected_stylist = Stylist::find($id);
         return $app['twig']->render('stylist_edit.html.twig', array('stylist' => $selected_stylist));
     });
 
-    //Delete a single stylist from stylist page
-    $app->delete('/delete_stylist/{id}', function($id) use ($app) {
+    //Update a single stylist from stylist edit
+    $app->patch('/stylist/{id}', function($id) use ($app) {
+        $new_name = $_POST['new_name'];
+        $stylist = Stylist::find($id);
+        $stylist->update($new_name);
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist));
+    });
+
+
+    //Delete a single stylist from stylist edit page
+    $app->delete('/delete/stylist/{id}', function($id) use ($app) {
         $selected_stylist = Stylist::find($id);
         $selected_stylist->delete();
         return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
     });
-
-
-
-
-
-
-
-
 
     return $app;
 ?>
