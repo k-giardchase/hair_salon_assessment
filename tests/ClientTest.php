@@ -25,6 +25,22 @@
             $this->assertEquals("Jane", $result);
         }
 
+        function testSetClientName()
+        {
+            //Arrange
+            $client_name = "Jane";
+            $id = 1;
+            $test_client= new Client($client_name, $id);
+
+            //Act
+            $test_client->setClientName('Jackie');
+
+            //Assert
+            $result = $test_client->getClientName();
+            $this->assertEquals("Jackie", $result);
+        }
+
+
 
     }
 
