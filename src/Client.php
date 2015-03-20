@@ -30,6 +30,11 @@
         {
             $this->id = (int) $new_id;
         }
+
+        function save()
+        {
+            $GLOBALS['DB']->query("INSERT INTO clients (client_name) VALUES '{$this->getClientName()}';");
+        }
     }
 
 
