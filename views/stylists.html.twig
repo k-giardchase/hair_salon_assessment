@@ -16,9 +16,11 @@
         <p> Here are all of your stylists:</p>
         <ul>
         {% for stylist in stylists %}
-            <li>{{ stylist.getStylistName }}</li>
+            <li><a href='/stylist/{{ stylist.getId }}'> {{ stylist.getStylistName }}</li></a>
         {% endfor %}
         </ul>
+    {% else %}
+        <p>Sorry, there are no stylists to display. Please enter one above.</p>
     {% endif %}
 
     <form action="/delete_stylists" method="post">

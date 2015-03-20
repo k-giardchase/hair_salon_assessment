@@ -11,13 +11,14 @@
         'twig.path' => __DIR__.'/../views'
     ));
 
+    //HOME
     //Render home page
-    $app->get('/stylists', function() use ($app) {
+    $app->get('/', function() use ($app) {
 
-        return $app['twig']->render('stylists.html.twig');
+        return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
     });
 
-    //List and post stylists to home page
+    //Post stylists to home page
     $app->post('/stylists', function() use ($app) {
         $stylist_name = $_POST['stylist_name'];
         $new_stylist = new Stylist($stylist_name, $id = null);
@@ -31,16 +32,17 @@
         return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
     });
 
+    //SINGLE STYLIST PAGE
     //Render single stylist page
-    $app->get('/stylist{id}', function($id) use ($app) {
-        $selected_stylist = Stylist::find($id)
-        return $app['twig']->render('stylist.html.twig', array('stylist' => $selected_stylist);
+    $app->get('/stylist/{id}', function($id) use ($app) {
+        $selected_stylist = Stylist::find($id);
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $selected_stylist));
     });
 
     //Delete a single stylist from stylist page
     $app->post('/delete_stylist', function() use ($app) {
 
-    })
+    });
 
 
 
