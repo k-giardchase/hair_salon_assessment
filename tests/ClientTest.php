@@ -46,19 +46,34 @@
         }
 
 
-        // function testGetId()
-        // {
-        //     //Arrange
-        //     $client_name = "Bob";
-        //     $id = 1;
-        //     $test_client = new Client($client_name, $id);
-        //
-        //     //Act
-        //     $result = $test_client->getId();
-        //
-        //     //Assert
-        //     $this->assertEquals(1, $result);
-        // }
+        function testGetId()
+        {
+            //Arrange
+            $client_name = "Bob";
+            $id = 1;
+            $test_client = new Client($client_name, $id);
+
+            //Act
+            $result = $test_client->getId();
+
+            //Assert
+            $this->assertEquals(1, $result);
+        }
+
+        function testSetId()
+        {
+            //Arrange
+            $client_name = "Gillian";
+            $id = 1;
+            $test_client = new Client($client_name, $id);
+
+            //Act
+            $test_client->setId(2);
+
+            //Assert
+            $result = $test_client->getId();
+            $this->assertEquals(2, $result);
+        }
 
         function testSave()
         {
