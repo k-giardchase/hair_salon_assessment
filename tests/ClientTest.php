@@ -41,6 +41,34 @@
         }
 
 
+        // function testGetId()
+        // {
+        //     //Arrange
+        //     $client_name = "Bob";
+        //     $id = 1;
+        //     $test_client = new Client($client_name, $id);
+        //
+        //     //Act
+        //     $result = $test_client->getId();
+        //
+        //     //Assert
+        //     $this->assertEquals(1, $result);
+        // }
+
+        function testSave()
+        {
+            //Arrange
+            $client_name = "Peter";
+            $id = 1;
+            $test_client =  new Client($client_name, $id);
+
+            //Act
+            $test_client->save();
+
+            //Assert
+            $result = Client::getAll();
+            $this->assertEquals($test_client, $result[0]);
+        }
 
     }
 
