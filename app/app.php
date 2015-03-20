@@ -69,15 +69,40 @@
         $new_name = $_POST['new_name'];
         $stylist = Stylist::find($id);
         $stylist->update($new_name);
-        return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist));
+        return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => Client::getAll()));
     });
 
+    //Delete all clients from a single stylist
+    $app->post('/delete_clients', function() use ($app) {
+        Client::deleteAll();
+        return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
+    });
 
     //Delete a single stylist from stylist edit page
     $app->delete('/delete/stylist/{id}', function($id) use ($app) {
         $selected_stylist = Stylist::find($id);
         $selected_stylist->delete();
         return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
+    //EDIT CLIENT PAGE
+    //Render edit single client page
+    $app->get('/client/{id}/edit', function($id) use ($app) {
+        $selected_client = Client::find($id);
+        return $app['twig']->render('client_edit.html.twig', array('client' => $selected_client));
+    });
+
+    $app->patch('/client/{id}', function($id) use ($app) {
+        $selected_client = Client::find($id);
+        $new_client = $_POST['client_name'];
+        $selected_client->update($new_client);
+        return $app['twig']->render('stylists.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
+    $app->delete('/client/{id}', function($id) use ($app) {
+            $selected_client = Client::find($id);
+            $selected_client->delete();
+            return $app['twig']->render('/', array('stylists' => Stylist::getAll()));
     });
 
     return $app;
