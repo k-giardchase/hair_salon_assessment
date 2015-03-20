@@ -6,6 +6,7 @@
     */
 
     require_once __DIR__.'/../src/Stylist.php';
+    require_once __DIR__.'/../src/Client.php';
 
     $DB = new PDO('pgsql:host=localhost;dbname=hair_salon_test');
 
@@ -14,6 +15,7 @@
         protected function tearDown()
         {
             Stylist::deleteAll();
+            Client::deleteAll();
         }
 
         function testGetStylistName()
