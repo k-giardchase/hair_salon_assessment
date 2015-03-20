@@ -43,6 +43,21 @@
             $this->assertEquals(1, $result);
         }
 
+        function testSetId()
+        {
+            //Arrange
+            $stylist_name = "Gillian";
+            $id = 1;
+            $test_stylist = new Stylist($stylist_name, $id);
+
+            //Act
+            $test_stylist->setId(2);
+
+            //Assert
+            $result = $test_stylist->getId();
+            $this->assertEquals(2, $result);
+        }
+
         function testSave()
         {
             //Arrange
