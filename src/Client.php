@@ -74,7 +74,6 @@
             return $found_client;
         }
 
-
         static function getAll()
         {
             $all_clients = array();
@@ -95,6 +94,4 @@
         }
 
     }
-
-
 ?>
