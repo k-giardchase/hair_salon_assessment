@@ -70,6 +70,25 @@
             $this->assertEquals($test_client, $result[0]);
         }
 
+        function testGetAll()
+        {
+            //Arrange
+            $client_name = "Jane";
+            $client_name2 = "Peter";
+            $id = 1;
+            $id2= 2;
+            $test_client = new Client($client_name, $id);
+            $test_client2 = new Stylist($client_name2, $id2);
+            $test_client->save();
+            $test_client2->save();
+
+            //Act
+            $result = Client::getAll();
+
+            //Assert
+            $this->assertEquals([$test_client, $test_client2], $result);
+        }
+
     }
 
 ?>
