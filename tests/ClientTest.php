@@ -90,6 +90,25 @@
             $this->assertEquals($test_client, $result[0]);
         }
 
+        function testFind()
+        {
+            //Arrange
+            $client_name =  "Maggie";
+            $id = 1;
+            $new_client = new Client($client_name, $id);
+            $new_client->save();
+            $client_name2 = "Piper";
+            $id2 = 2;
+            $new_client2 = new Client($client_name2, $id2);
+            $new_client2->save();
+
+            //Act
+            $result = Client::find($new_client->getId());
+
+            //Assert
+            $this->assertEquals($new_client, $result);
+        }
+        
         function testGetAll()
         {
             //Arrange

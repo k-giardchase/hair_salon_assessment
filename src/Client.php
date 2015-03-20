@@ -38,6 +38,7 @@
             $this->setId($result['id']);
         }
 
+
         static function getAll()
         {
             $all_clients = array();
@@ -55,6 +56,7 @@
         {
             $GLOBALS['DB']->query("DELETE FROM clients *;");
         }
+
     }
 
 
