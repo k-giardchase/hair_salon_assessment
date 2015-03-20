@@ -17,7 +17,7 @@
 
     <h4>Add a client</h4>
     <form action="/clients" method="post">
-        <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId }}">
+        <input id="stylist_id" name="stylist_id" type="hidden" value="{{ stylist.getId() }}">
         <label for='client_name'>Client name</label>
         <input id='client_name' name='client_name' type='text'>
         <button type='submit'>Add a client</button>

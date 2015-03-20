@@ -2,6 +2,7 @@
 
     require_once __DIR__."/../vendor/autoload.php";
     require_once __DIR__."/../src/Stylist.php";
+    require_once __DIR__."/../src/Client.php";
 
     use Symfony\Component\Debug\Debug;
     Debug::enable();
@@ -48,11 +49,10 @@
     });
 
     //Add client to stylist on stylist page
-    $app->post('/clients', function($id) use ($app) {
+    $app->post('/clients', function() use ($app) {
         $client_name = $_POST['client_name'];
         $stylist_id = $_POST['stylist_id'];
-        $id = null;
-        $new_client = new Client($client_name, $stylist_id, $id);
+        $new_client = new Client($client_name, $stylist_id, $id = null);
         $new_client->save();
         $selected_stylist = Stylist::find($stylist_id);
         return $app['twig']->render('stylist.html.twig', array('stylist' => $selected_stylist, 'clients' => $selected_stylist->getClients()));
