@@ -11,7 +11,7 @@
 
     class StylistTest extends PHPUnit_Framework_TestCase
     {
-        function testGetStylist
+        function testGetStylist()
         {
             //Arrange
             $stylist = "Jane";

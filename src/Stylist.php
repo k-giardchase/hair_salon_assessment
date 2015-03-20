@@ -2,11 +2,11 @@
 
     class Stylist
     {
-        private stylist;
+        private $stylist;
 
         function __construct($stylist)
         {
-            $this->stylist = $stylist
+            $this->stylist = $stylist;
         }
 
         function getStylist()
