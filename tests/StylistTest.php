@@ -132,6 +132,23 @@
             $result = Stylist::getAll();
             $this->assertEquals([], $result);
         }
+
+        function testUpdate()
+        {
+            //Arrange
+            $stylist_name = "Maggie";
+            $id = 1;
+            $test_stylist = new Stylist($stylist_name, $id);
+            $test_stylist->save();
+
+            $new_stylist_name = "Mags";
+
+            //Act
+            $test_stylist->update($new_stylist_name);
+
+            //Assert
+            $this->assertEquals("Mags", $test_stylist->getStylistName());
+        }
     }
 
 ?>
