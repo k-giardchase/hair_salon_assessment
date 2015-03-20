@@ -108,7 +108,7 @@
             //Assert
             $this->assertEquals($new_client, $result);
         }
-        
+
         function testGetAll()
         {
             //Arrange
@@ -126,6 +126,23 @@
 
             //Assert
             $this->assertEquals([$test_client, $test_client2], $result);
+        }
+
+        function testUpdate()
+        {
+            //Arrange
+            $client_name = "Maggie";
+            $id = 1;
+            $test_client = new Client($client_name, $id);
+            $test_client->save();
+
+            $new_client_name = "Mags";
+
+            //Act
+            $test_client->update($new_client_name);
+
+            //Assert
+            $this->assertEquals("Mags", $test_client->getClientName());
         }
 
         function testDeleteAll()
