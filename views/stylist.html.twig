@@ -6,9 +6,13 @@
     <h1>Your Stylist:</h1>
     <h2> {{ stylist.getStylistName }} </h2>
 
+
+    <p><a href="/stylist/{{ stylist.getId }}/edit">Edit this stylist</a></p>
+    
     <form action='/delete_stylist/{id}' method="post">
         <button type="submit">Delelte this stylist</button>
     </form>
     <p><a href="/">Home</a></p>
+
 </body>
 </html>
