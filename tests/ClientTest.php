@@ -120,7 +120,6 @@
             $client_name = "Bob";
             $stylist_id = $test_stylist->getId();
             $test_client = new Client($client_name, $stylist_id, $id);
-            $test_client->save();
 
             //Act
             $test_client->save();
@@ -137,6 +136,8 @@
             $id = 1;
             $test_stylist = new Stylist($stylist_name, $id);
             $test_stylist->save();
+
+            $stylist_id = $test_stylist->getId();
 
             $client_name =  "Maggie";
             $id = 1;
@@ -161,6 +162,7 @@
             $id = 1;
             $test_stylist = new Stylist($stylist_name, $id);
             $test_stylist->save();
+            $stylist_id = $test_stylist->getId();
 
             $client_name = "Jane";
             $client_name2 = "Peter";
@@ -218,6 +220,7 @@
             $id = 1;
             $test_stylist = new Stylist($stylist_name, $id);
             $test_stylist->save();
+            $stylist_id = $test_stylist->getId();
 
             $client_name = "Jane";
             $client_name2 = "Peter";

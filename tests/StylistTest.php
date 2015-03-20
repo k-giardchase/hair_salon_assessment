@@ -191,7 +191,7 @@
             $test_stylist = new Stylist($stylist_name, $id);
             $test_stylist->save();
 
-            $test_stylist_id = $test_stylist->getId();
+            $stylist_id = $test_stylist->getId();
 
             $client_name =  "Maggie";
             $id = 1;
@@ -206,7 +206,7 @@
             $result = $test_stylist->getClients();
 
             //Assert
-            $this->assertEquals([$test_client, $test_client2], $result);
+            $this->assertEquals([$new_client, $new_client2], $result);
         }
     }
 
