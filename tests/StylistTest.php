@@ -24,19 +24,19 @@
             $this->assertEquals("Jane", $result);
         }
 
-        // function testSave()
-        // {
-        //     //Arrange
-        //     $stylist = "Peter";
-        //     $test_stylist =  new Stylist($stylist);
-        //
-        //     //Act
-        //     $test_stylist->save();
-        //
-        //     //Assert
-        //     $result = Stylist::getAll();
-        //     $this->assertEquals($test_stylist, $result[0]);
-        // }
+        function testSave()
+        {
+            //Arrange
+            $stylist = "Peter";
+            $test_stylist =  new Stylist($stylist);
+
+            //Act
+            $test_stylist->save();
+
+            //Assert
+            $result = Stylist::getAll();
+            $this->assertEquals($test_stylist, $result[0]);
+        }
     }
 
 ?>
