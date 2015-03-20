@@ -12,7 +12,7 @@
     ));
 
     use Symfony\Component\HttpFoundation\Request;
-Request::enableHttpMethodParameterOverride();
+    Request::enableHttpMethodParameterOverride();
 
     //HOME
     //Render home page
