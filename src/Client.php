@@ -38,6 +38,19 @@
             $this->setId($result['id']);
         }
 
+        static function find($search_id)
+        {
+            $found_client = null;
+            $clients = Client::getAll();
+            foreach($clients as $client){
+                $client_id = $client->getId();
+                if($client_id == $search_id) {
+                    $found_client = $client;
+                }
+            }
+            return $found_client;
+        }
+
 
         static function getAll()
         {
