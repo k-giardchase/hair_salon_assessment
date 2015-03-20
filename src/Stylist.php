@@ -18,6 +18,12 @@
         {
             $this->stylist = $stylist;
         }
+
+        function save()
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stylists (stylist_name) VALUES ('{$this->getStylist()}'
+        );");
+        }
     }
 
 ?>
