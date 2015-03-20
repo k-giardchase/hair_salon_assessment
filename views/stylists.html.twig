@@ -11,5 +11,19 @@
         <input id="stylist_name" name="stylist_name" type="text" required>
         <button type="submit">Add</button>
     </form>
+
+    {% if stylists is not empty %}
+        <p> Here are all of your stylists:</p>
+        <ul>
+        {% for stylist in stylists %}
+            <li>{{ stylist.getStylistName }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form action="/delete_stylists" method="post">
+        <button type="submit">Delete All</button>
+    </form>
+
 </body>
 </html>
