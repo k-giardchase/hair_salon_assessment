@@ -5,14 +5,14 @@ Kyle Giard-Chase
 March 20 2015
 
 ##Description
-This hair stylist app will let a hair salon owner add a list of their stylists, as well as add a list to each stylist of their clients. 
+This hair stylist app will let a hair salon owner add a list of their stylists, as well as add a list to each stylist of their clients.
 
 
 ##Use and Editing
 To use the app, download the source code and run it in on your php server.
-You will need to create a psql database with the following tables and attributes:
-<!-- tasks- id serial PRIMARY KEY, description varchar, category_id int, due varchar.
-category - id serial PRIMARY KEY, name varchar. -->
+You will need to create two psql databases, hair_salon and hair_salon_test, with the following tables and attributes:
+clients- id serial PRIMARY KEY, client_name varchar, stylist_id int.
+stylists- id serial PRIMARY KEY, stylist_name varchar.
 
 To edit the app, download the source code and open it in your text editor. <br />
     *Note: If you are copying any of the code to your own directories, you may need to install Composer
