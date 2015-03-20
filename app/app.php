@@ -11,9 +11,9 @@
         'twig.path' => __DIR__.'/../views'
     ));
 
-    $app->get('/', function() use ($app){
+    $app->get('/', function() use ($app) {
 
-        return $app['twig']->render('stylists.twig');
+        return $app['twig']->render('stylists.html.twig');
     });
 
 
